@@ -17,12 +17,17 @@ const generateRandomBetween = (min, max, exclude) => {
   }
 };
 
-let minBoundary = 1;
-let maxBoundary = 100;
+let minBoundary;
+let maxBoundary;
 
-const GameScreen = ({ userNumber, onGameOver }) => {
+const GameScreen = ({ userNumber, onGameOver, onSetRoundsNumber }) => {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -53,6 +58,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
       currentGuess
     );
     setCurrentGuess(newRndNumber);
+    onSetRoundsNumber();
   };
   return (
     <View style={styles.screen}>
