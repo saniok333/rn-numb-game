@@ -58,7 +58,9 @@ const GameScreen = ({ userNumber, onGameOver }) => {
       <Title style={styles.title}>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText>Greater or lower?</InstructionText>
+        <InstructionText style={styles.instructionText}>
+          Greater or lower?
+        </InstructionText>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
@@ -83,6 +85,9 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+  },
+  instructionText: {
+    paddingBottom: 12,
   },
   buttonsContainer: {
     flexDirection: 'row',
